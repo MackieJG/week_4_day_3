@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>Thistle Library Collection</h4>
+    {% for book in all_book_list %}
+        <div class="book">
+           <h6>Title: {{ book.title }}</h6>
+           <a href="/books/{{ loop.index0 }}">View Book</a>
+           <div class="genre">
+            <h6>Genre: {{ book.genre }}</h6>
+           </div>
+           <div class="author">
+            <h6>Author: {{ book.author.name }}</h6>
+           </div>
+           <form class="delete-form" action="/books/{{book.id}}/delete" method="post">
+                <button class="delete-button">
+                    <i class="fa fa-trash-o fa-2x" style="color: rgb(88, 99, 203)"></i>
+                </button>
+           </form>
+        </div>
+    {% endfor %}
+{% endblock %}
